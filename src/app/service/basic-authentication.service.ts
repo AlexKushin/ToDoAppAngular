@@ -15,6 +15,23 @@ export class BasicAuthenticationService {
     private http: HttpClient
   ) { }
 
+  executeJWTAuthService(username: string, password: string) {
+    
+
+    return this.http.post<any>(`${API_URL}/authenticate`,
+      {
+        username,
+      password
+    }).pipe(
+        map(
+          data => {
+            sessionStorage.setItem(AUTHENTICARED_USER, username);
+            sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+            return data;
+          }
+        )
+      );
+  }
 
   executeBasicAuthService(username: string, password: string) {
     let basicAuthHeaderString = "Basic " + window.btoa(username + ":" + password)
