@@ -74,10 +74,6 @@ export class BasicAuthenticationService {
     
   }
 
-
-
-
-
 }
 export class AuthenticationBean {
   constructor(public message: string) { }
