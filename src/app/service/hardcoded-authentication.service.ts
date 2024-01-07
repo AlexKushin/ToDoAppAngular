@@ -10,7 +10,7 @@ export class HardcodedAuthenticationService {
 
   authenticate(username: string, password: string) {
     console.log('before ' + this.isUserLoggedIn())
-    if (username === "AlexKushyn" && password === "123") {
+    if (username === "AlexKushyn" && password === "password") {
       sessionStorage.setItem('authenticatedUser', username)
       console.log('after ' + this.isUserLoggedIn())
       return true;
@@ -18,12 +18,13 @@ export class HardcodedAuthenticationService {
     return false
   }
 
-  isUserLoggedIn(){
+  isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticatedUser')
     return !(user === null)
   }
 
-  logout(){
+
+  logout() {
     sessionStorage.removeItem('authenticatedUser')
   }
 }
