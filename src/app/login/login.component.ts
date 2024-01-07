@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
-import { BasicAuthenticationService } from '../service/basic-authentication.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private hardcodedAuthenticationService: HardcodedAuthenticationService,
-    private basicAuthService: BasicAuthenticationService
+    private authService: AuthenticationService
   ) { }
   ngOnInit(): void {
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleBasicAuthLogin() {
-    this.basicAuthService.executeBasicAuthService(this.username, this.password).subscribe(
+    this.authService.executeBasicAuthService(this.username, this.password).subscribe(
       data => {
         console.log(data)
         this.router.navigate(["welcome", this.username])
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleJWTAuthLogin() {
-    this.basicAuthService.executeJWTAuthService(this.username, this.password).subscribe(
+    this.authService.executeJWTAuthService(this.username, this.password).subscribe(
       data => {
         console.log(data)
         this.router.navigate(["welcome", this.username])

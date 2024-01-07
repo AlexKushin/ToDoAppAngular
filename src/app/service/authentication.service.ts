@@ -9,7 +9,7 @@ export const AUTHENTICARED_USER = "authenticatedUser"
 @Injectable({
   providedIn: 'root'
 })
-export class BasicAuthenticationService {
+export class AuthenticationService {
 
   constructor(
     private http: HttpClient
